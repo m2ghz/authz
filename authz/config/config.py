@@ -1,7 +1,13 @@
 from os import environ
-import os
 
-class Config(object):
-        ENV = os.environ.get("SKOB_AUTHZ_ENV", "PRODUCTION")
-        DEBUG = int(os.environ.get("SKOB_AUTHZ_DEBUG", "0"))
-        TESTING = int(os.environ.get("SKOB_AUTHZ_TESTING", "0"))
+class Config():
+	
+        #######  Global Configuration #######
+
+        ENV = environ.get("SKOB_AUTHZ_ENV", "PRODUCTION")
+        DEBUG = int(environ.get("SKOB_AUTHZ_DEBUG", "0"))
+        TESTING = int(environ.get("SKOB_AUTHZ_TESTING", "0"))
+        ######### Database Configuration ####
+        
+        SQLALCHEMY_DATABASE_URI = environ.get("SKOB_AUTHZ_DATABASE_URI", None)
+        SQLALCHEMY_TRACK_MODIFICATIONS = TESTING
